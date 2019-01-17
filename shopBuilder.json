@@ -71,5 +71,39 @@
             "label": "Widget.categoryFooter",
             "position": 600
         }
-    ]
+    ],
+    "globalSettings": {
+        "title":{
+            "type":"inputText",
+            "required":"false",
+            "label":"Titel label",
+            "options":{
+                "defaultValue":"Ceres Webshop"
+            }
+        },
+        "Number of columns":{
+            "type":"selectBox",
+            "required":false,
+            "deprecated":true,
+            "label":"Number of columns label",
+            "options":{
+                "defaultValue":"3",
+                "selectBoxValues":[
+                    {
+                        "value":"1",
+                        "caption":"Config.footerNumberOfCols1"
+                    },
+                    {
+                        "value":"2",
+                        "caption":"Config.footerNumberOfCols2"
+                    },
+                    {
+                        "value":"3",
+                        "caption":"Config.footerNumberOfCols3"
+                    }
+                ]
+            }
+        }
+    },
+    "globalSettingsHandler": "Ceres\\\\SettingsHandler"
 }
