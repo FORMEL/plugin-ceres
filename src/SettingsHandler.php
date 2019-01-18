@@ -25,15 +25,13 @@ class SettingsHandler
         return $configs;
     }
 
-    public function write($values, $pluginSetId = null)
+    public function write($pluginSetId, $pluginName, $values)
     {
-        $pluginId = 4;
-
         $config = new Configuration();
 
         $config->key = 'globalSetting:' . $values[0]['key'];
         $config->value = $values[0]['value'];
-        $config->plugin_id = 4;
+        $config->plugin_id = $pluginSetId;
         $config->pluginSetEntryId = 4;
 
         $config->save();
