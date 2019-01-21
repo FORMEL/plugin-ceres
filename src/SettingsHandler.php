@@ -49,7 +49,7 @@ class SettingsHandler
 
         foreach($pluginSetEntries as $pluginSetEntry)
         {
-            if($pluginSetEntry->pluginId == $pluginId)
+            if((int)$pluginSetEntry->pluginId === (int)$pluginId && (int)$pluginSetEntry->pluginSetId === (int)$pluginSetId)
             {
                 $pluginSetEntryId = $pluginSetEntry->id;
             }
