@@ -74,21 +74,21 @@
     ],
     "globalSettings": {
         "title":{
-            "type":"inputText",
+            "type":"text",
             "required":"false",
-            "label":"Titel label",
+            "defaultValue":"Ceres Webshop",
             "options":{
-                "defaultValue":"Ceres Webshop"
+                "name":"Titel label"
             }
         },
         "Number of columns":{
-            "type":"selectBox",
+            "type":"select",
             "required":false,
             "deprecated":true,
-            "label":"Number of columns label",
+            "defaultValue":"3",
             "options":{
-                "defaultValue":"3",
-                "selectBoxValues":[
+                "name":"Number of columns label",
+                "listBoxValues":[
                     {
                         "value":"1",
                         "caption":"Config.footerNumberOfCols1"
@@ -102,6 +102,22 @@
                         "caption":"Config.footerNumberOfCols3"
                     }
                 ]
+            }
+        },
+        "checkoutRouteCategory": {
+            "type": "category",
+            "required": false,
+            "options": {
+                "name": "Config.globalShippingCostsCategoryIdLabel"
+            }
+        },
+        "checkoutRouteDefaultActive": {
+            "isVisible": "checkoutRouteCategory > 0",
+            "type": "checkbox",
+            "required": false,
+            "defaultValue": "false",
+            "options": {
+                "name": "Config.globalEnableOldUrlPatternLabel"
             }
         }
     },
