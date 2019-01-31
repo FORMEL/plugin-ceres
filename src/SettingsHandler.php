@@ -25,8 +25,7 @@ class SettingsHandler
             ->where('pluginSetEntryId', '=', $pluginSetEntryId)
             ->get();
 
-        foreach ($configs as $config)
-        {
+        foreach ($configs as $config) {
             $config->key = str_replace('globalSetting:', '', $config->key);
         }
 
@@ -35,8 +34,6 @@ class SettingsHandler
 
     public function write($pluginSetId, $pluginName, $values)
     {
-        $config = new Configuration();
-
         $plugin = Plugin::where('name', '=', $pluginName)->first();
         $pluginId = $plugin->id;
 
@@ -47,19 +44,21 @@ class SettingsHandler
 
         $pluginSetEntryId = null;
 
-        foreach($pluginSetEntries as $pluginSetEntry)
-        {
-            if((int)$pluginSetEntry->pluginId === (int)$pluginId && (int)$pluginSetEntry->pluginSetId === (int)$pluginSetId)
-            {
+        foreach ($pluginSetEntries as $pluginSetEntry) {
+            if ((int)$pluginSetEntry->pluginId === (int)$pluginId && (int)$pluginSetEntry->pluginSetId === (int)$pluginSetId) {
                 $pluginSetEntryId = $pluginSetEntry->id;
             }
         }
 
-        $config->key = 'globalSetting:' . $values[0]['key'];
-        $config->value = $values[0]['value'];
-        $config->plugin_id = $pluginId;
-        $config->pluginSetEntryId = $pluginSetEntryId;
+        foreach($values as $value)
+        {
+            $config = new Configuration();
+            $config->key = 'globalSetting:' . $value['key'];
+            $config->value = $value['value'];
+            $config->plugin_id = $pluginId;
+            $config->pluginSetEntryId = $pluginSetEntryId;
 
-        $config->save();
+            $config->save();
+        }
     }
 }
