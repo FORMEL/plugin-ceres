@@ -26,7 +26,7 @@
             {% endautoescape %}
         </label>
         <label v-else class="form-check-label" :for="'gtc-accept' + _uid">
-            ${ customText }<template v-if="isRequired">*</template>
+            ${ customText | raw }<template v-if="isRequired">*</template>
         </label>
     </div>
 </script>

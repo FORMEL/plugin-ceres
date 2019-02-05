@@ -36,6 +36,7 @@ class DefaultCheckoutPreset implements ContentPreset
         $this->createContactWishWidget();
         $this->createShippingPrivacyCheckWidget();
         $this->createGtcCheckWidget();
+        $this->createTextWidget();
         $this->createBasketWidget();
         $this->createCouponWidget();
         $this->createBasketTotalsWidget();
@@ -92,6 +93,15 @@ class DefaultCheckoutPreset implements ContentPreset
     private function createShippingProfileWidget()
     {
         $this->twoColumnWidget->createChild('first','Ceres::ShippingProfileWidget');
+    }
+
+    private function createTextWidget()
+    {
+        $defaultText = "";
+        $defaultText .= "&#42;<small>{{ trans(\"Ceres::Template.contactRequiredField\") }}</small>";
+
+        $this->twoColumnWidget->createChild('first','Ceres::TextWidget')
+            ->withSetting("text", $defaultText);
     }
     
     private function createTwoColumnWidget()
