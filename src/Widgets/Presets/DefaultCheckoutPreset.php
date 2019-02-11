@@ -98,10 +98,11 @@ class DefaultCheckoutPreset implements ContentPreset
     private function createTextWidget()
     {
         $defaultText = "";
-        $defaultText .= "&#42;<small>{{ trans(\"Ceres::Template.contactRequiredField\") }}</small>";
+        $defaultText .= "&#42;)&nbsp;{{ trans(\"Ceres::Template.contactRequiredField\") }}";
 
         $this->twoColumnWidget->createChild('first','Ceres::TextWidget')
-            ->withSetting("text", $defaultText);
+            ->withSetting("text", $defaultText)
+            ->withSetting("appearance", "none");
     }
     
     private function createTwoColumnWidget()
